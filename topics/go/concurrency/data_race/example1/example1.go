@@ -13,7 +13,7 @@ import (
 )
 
 // counter is a variable incremented by all goroutines.
-var counter int
+var counter int32
 
 func main() {
 
@@ -28,12 +28,12 @@ func main() {
 	for i := 0; i < grs; i++ {
 		go func() {
 			for count := 0; count < 2; count++ {
-
 				// Capture the value of Counter.
 				value := counter
 
 				// Increment our local value of Counter.
 				value++
+				// fmt.Println("logger") //if uncomment this line answer woud be 2
 
 				// Store the value back into Counter.
 				counter = value

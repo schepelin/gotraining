@@ -6,10 +6,11 @@ package main
 
 import (
 	"fmt"
-	"log"
 	"os"
 	"os/signal"
 	"time"
+
+	log "github.com/ardanlabs/gotraining/topics/go/concurrency/patterns/advanced/logger"
 )
 
 // device allows us to mock a device we write logs to.
@@ -37,7 +38,7 @@ func main() {
 	// Create a logger value with a buffer of capacity
 	// for each goroutine that will be logging.
 	var d device
-	l := log.New(&d, "prefix", 0)
+	l := log.New(&d, grs)
 
 	// Generate goroutines, each writing to disk.
 	for i := 0; i < grs; i++ {

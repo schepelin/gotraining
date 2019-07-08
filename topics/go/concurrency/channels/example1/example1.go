@@ -258,6 +258,8 @@ func cancellation() {
 	ctx, cancel := context.WithTimeout(context.Background(), duration)
 	defer cancel()
 
+	// if you use unbuffered channel here it will be a goroutine leak
+	// check it wjile code review
 	ch := make(chan string, 1)
 
 	go func() {
